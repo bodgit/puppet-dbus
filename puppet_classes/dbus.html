@@ -6,15 +6,15 @@
 <title>
   Puppet Class: dbus
   
-    &mdash; Documentation by YARD 0.9.8
+    &mdash; Documentation by YARD 0.9.26
   
 </title>
 
-  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "puppet_classes::dbus";
   relpath = '../';
 </script>
@@ -62,11 +62,6 @@
       <div id="content"><h1>Puppet Class: dbus</h1>
 <div class="box_info">
   
-  <dl>
-    <dt>Inherits:</dt>
-    <dd>::dbus::params</dd>
-  </dl>
-  
   
   <dl>
     <dt>Defined in:</dt>
@@ -75,6 +70,7 @@
     </dd>
   </dl>
 </div>
+
 <h2>Overview</h2>
 <div class="docstring">
   <div class="discussion">
@@ -83,6 +79,8 @@
 
   </div>
 </div>
+
+
 <div class="tags">
   
   <div class="examples">
@@ -93,7 +91,7 @@
 <p>Declaring the class</p>
 </div></p>
       
-      <pre class="example code"><code>include ::dbus</code></pre>
+      <pre class="example code"><code><span class='id identifier rubyid_include'>include</span> <span class='id identifier rubyid_dbus'>dbus</span></code></pre>
     
   </div>
 <p class="tag_title">Parameters:</p>
@@ -104,10 +102,8 @@
         <span class='name'>conf_dir</span>
       
       
-        <span class='type'>(<tt>Stdlib::AbsolutePath</tt>)</span>
+        <span class='type'>(<tt>Stdlib::Absolutepath</tt>)</span>
       
-      
-        <em class="default">(defaults to: <tt>$::dbus::params::conf_dir</tt>)</em>
       
       
         &mdash;
@@ -122,16 +118,13 @@
         <span class='name'>local_session_conf</span>
       
       
-        <span class='type'>(<tt>Stdlib::AbsolutePath</tt>)</span>
+        <span class='type'>(<tt>Stdlib::Absolutepath</tt>)</span>
       
-      
-        <em class="default">(defaults to: <tt>$::dbus::params::local_session_conf</tt>)</em>
       
       
         &mdash;
         <div class='inline'>
-<p>The configuration file used to override the default session bus
-configuration, usually <code>/etc/dbus-1/session-local.conf</code>.</p>
+<p>The configuration file used to override the default session bus configuration, usually <code>/etc/dbus-1/session-local.conf</code>.</p>
 </div>
       
     </li>
@@ -141,16 +134,13 @@ configuration, usually <code>/etc/dbus-1/session-local.conf</code>.</p>
         <span class='name'>local_system_conf</span>
       
       
-        <span class='type'>(<tt>Stdlib::AbsolutePath</tt>)</span>
+        <span class='type'>(<tt>Stdlib::Absolutepath</tt>)</span>
       
-      
-        <em class="default">(defaults to: <tt>$::dbus::params::local_system_conf</tt>)</em>
       
       
         &mdash;
         <div class='inline'>
-<p>The configuration file used to override the default system bus
-configuration, usually <code>/etc/dbus-1/system-local.conf</code>.</p>
+<p>The configuration file used to override the default system bus configuration, usually <code>/etc/dbus-1/system-local.conf</code>.</p>
 </div>
       
     </li>
@@ -162,8 +152,6 @@ configuration, usually <code>/etc/dbus-1/system-local.conf</code>.</p>
       
         <span class='type'>(<tt>String</tt>)</span>
       
-      
-        <em class="default">(defaults to: <tt>$::dbus::params::package_name</tt>)</em>
       
       
         &mdash;
@@ -181,8 +169,6 @@ configuration, usually <code>/etc/dbus-1/system-local.conf</code>.</p>
         <span class='type'>(<tt>Boolean</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>$::dbus::params::purge_session_dir</tt>)</em>
-      
       
         &mdash;
         <div class='inline'>
@@ -199,32 +185,10 @@ configuration, usually <code>/etc/dbus-1/system-local.conf</code>.</p>
         <span class='type'>(<tt>Boolean</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>$::dbus::params::purge_system_dir</tt>)</em>
-      
       
         &mdash;
         <div class='inline'>
 <p>Whether to purge any unmanaged system bus configuration files.</p>
-</div>
-      
-    </li>
-  
-    <li>
-      
-        <span class='name'>service_enable</span>
-      
-      
-        <span class='type'>(<tt>Optional[Boolean]</tt>)</span>
-      
-      
-        <em class="default">(defaults to: <tt>$::dbus::params::service_enable</tt>)</em>
-      
-      
-        &mdash;
-        <div class='inline'>
-<p>Whether to enable the service or not. On platforms that use systemd, the
-dbus unit is marked static so can neither be disabled or enabled by the
-<code>service</code> type.</p>
 </div>
       
     </li>
@@ -236,8 +200,6 @@ dbus unit is marked static so can neither be disabled or enabled by the
       
         <span class='type'>(<tt>String</tt>)</span>
       
-      
-        <em class="default">(defaults to: <tt>$::dbus::params::service_name</tt>)</em>
       
       
         &mdash;
@@ -255,16 +217,10 @@ dbus unit is marked static so can neither be disabled or enabled by the
         <span class='type'>(<tt>String</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>$::dbus::params::service_restart</tt>)</em>
-      
       
         &mdash;
         <div class='inline'>
-<p>The command used to get <code>dbus-daemon</code> to reload its
-configuration, which is usually <code>dbus-send --system --type=method_call
---dest=org.freedesktop.DBus / org.freedesktop.DBus.ReloadConfig</code>. On
-platforms that use systemd, this is what the unit does anyway and so will
-rely on that where possible.</p>
+<p>The command used to get <code>dbus-daemon</code> to reload its configuration, which is usually <code>dbus-send --system --type=method_call --dest=org.freedesktop.DBus / org.freedesktop.DBus.ReloadConfig</code>. On platforms that use systemd, this is what the unit does anyway and so will rely on that where possible.</p>
 </div>
       
     </li>
@@ -274,16 +230,13 @@ rely on that where possible.</p>
         <span class='name'>session_conf</span>
       
       
-        <span class='type'>(<tt>Stdlib::AbsolutePath</tt>)</span>
+        <span class='type'>(<tt>Stdlib::Absolutepath</tt>)</span>
       
-      
-        <em class="default">(defaults to: <tt>$::dbus::params::session_conf</tt>)</em>
       
       
         &mdash;
         <div class='inline'>
-<p>The configuration file containing the default session bus configuration,
-usually <code>/etc/dbus-1/session.conf</code>.</p>
+<p>The configuration file containing the default session bus configuration, usually <code>/etc/dbus-1/session.conf</code>.</p>
 </div>
       
     </li>
@@ -293,16 +246,13 @@ usually <code>/etc/dbus-1/session.conf</code>.</p>
         <span class='name'>session_dir</span>
       
       
-        <span class='type'>(<tt>Stdlib::AbsolutePath</tt>)</span>
+        <span class='type'>(<tt>Stdlib::Absolutepath</tt>)</span>
       
-      
-        <em class="default">(defaults to: <tt>$::dbus::params::session_dir</tt>)</em>
       
       
         &mdash;
         <div class='inline'>
-<p>The directory used by applications to add additional session bus
-configuration, usually <code>/etc/dbus-1/session.d</code>.</p>
+<p>The directory used by applications to add additional session bus configuration, usually <code>/etc/dbus-1/session.d</code>.</p>
 </div>
       
     </li>
@@ -312,16 +262,13 @@ configuration, usually <code>/etc/dbus-1/session.d</code>.</p>
         <span class='name'>system_conf</span>
       
       
-        <span class='type'>(<tt>Stdlib::AbsolutePath</tt>)</span>
+        <span class='type'>(<tt>Stdlib::Absolutepath</tt>)</span>
       
-      
-        <em class="default">(defaults to: <tt>$::dbus::params::system_conf</tt>)</em>
       
       
         &mdash;
         <div class='inline'>
-<p>The configuration file containing the default system bus configuration,
-usually <code>/etc/dbus-1/system.conf</code>.</p>
+<p>The configuration file containing the default system bus configuration, usually <code>/etc/dbus-1/system.conf</code>.</p>
 </div>
       
     </li>
@@ -331,16 +278,13 @@ usually <code>/etc/dbus-1/system.conf</code>.</p>
         <span class='name'>system_dir</span>
       
       
-        <span class='type'>(<tt>Stdlib::AbsolutePath</tt>)</span>
+        <span class='type'>(<tt>Stdlib::Absolutepath</tt>)</span>
       
-      
-        <em class="default">(defaults to: <tt>$::dbus::params::system_dir</tt>)</em>
       
       
         &mdash;
         <div class='inline'>
-<p>The directory used by applications to add additional system bus
-configuration, usually <code>/etc/dbus-1/system.d</code>.</p>
+<p>The directory used by applications to add additional system bus configuration, usually <code>/etc/dbus-1/system.d</code>.</p>
 </div>
       
     </li>
@@ -353,8 +297,6 @@ configuration, usually <code>/etc/dbus-1/system.d</code>.</p>
         <span class='type'>(<tt>Boolean</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>$::dbus::params::validate</tt>)</em>
-      
       
         &mdash;
         <div class='inline'>
@@ -366,12 +308,13 @@ configuration, usually <code>/etc/dbus-1/system.d</code>.</p>
 </ul>
 
 
+
   <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li><span class='object_link'><a href="../puppet_defined_types/dbus_3A_3Asession.html" title="puppet_defined_types::dbus::session (puppet_defined_type)">::dbus::session</a></span></li>
+      <li><span class='object_link'><a href="../puppet_defined_types/dbus_3A_3Asession.html" title="puppet_defined_types::dbus::session (puppet_defined_type)">dbus::session</a></span></li>
     
-      <li><span class='object_link'><a href="../puppet_defined_types/dbus_3A_3Asystem.html" title="puppet_defined_types::dbus::system (puppet_defined_type)">::dbus::system</a></span></li>
+      <li><span class='object_link'><a href="../puppet_defined_types/dbus_3A_3Asystem.html" title="puppet_defined_types::dbus::system (puppet_defined_type)">dbus::system</a></span></li>
     
   </ul>
 
@@ -382,6 +325,9 @@ configuration, usually <code>/etc/dbus-1/system.d</code>.</p>
         <pre class="lines">
 
 
+35
+36
+37
 38
 39
 40
@@ -402,43 +348,34 @@ configuration, usually <code>/etc/dbus-1/system.d</code>.</p>
 55
 56
 57
-58
-59
-60
-61
-62
-63
-64</pre>
+58</pre>
       </td>
       <td>
-        <pre class="code"><span class="info file"># File 'manifests/init.pp', line 38</span>
+        <pre class="code"><span class="info file"># File 'manifests/init.pp', line 35</span>
 
 class dbus (
-  Stdlib::AbsolutePath $conf_dir           = $::dbus::params::conf_dir,
-  Stdlib::AbsolutePath $local_session_conf = $::dbus::params::local_session_conf,
-  Stdlib::AbsolutePath $local_system_conf  = $::dbus::params::local_system_conf,
-  String               $package_name       = $::dbus::params::package_name,
-  Boolean              $purge_session_dir  = $::dbus::params::purge_session_dir,
-  Boolean              $purge_system_dir   = $::dbus::params::purge_system_dir,
-  Optional[Boolean]    $service_enable     = $::dbus::params::service_enable,
-  String               $service_name       = $::dbus::params::service_name,
-  String               $service_restart    = $::dbus::params::service_restart,
-  Stdlib::AbsolutePath $session_conf       = $::dbus::params::session_conf,
-  Stdlib::AbsolutePath $session_dir        = $::dbus::params::session_dir,
-  Stdlib::AbsolutePath $system_conf        = $::dbus::params::system_conf,
-  Stdlib::AbsolutePath $system_dir         = $::dbus::params::system_dir,
-  Boolean              $validate           = $::dbus::params::validate,
-) inherits ::dbus::params {
+  Stdlib::Absolutepath $conf_dir,
+  Stdlib::Absolutepath $local_session_conf,
+  Stdlib::Absolutepath $local_system_conf,
+  String               $package_name,
+  Boolean              $purge_session_dir,
+  Boolean              $purge_system_dir,
+  String               $service_name,
+  String               $service_restart,
+  Stdlib::Absolutepath $session_conf,
+  Stdlib::Absolutepath $session_dir,
+  Stdlib::Absolutepath $system_conf,
+  Stdlib::Absolutepath $system_dir,
+  Boolean              $validate,
+) {
 
-  contain ::dbus::install
-  contain ::dbus::config
-  contain ::dbus::service
-  contain ::dbus::reload
+  contain dbus::install
+  contain dbus::config
+  contain dbus::service
+  contain dbus::reload
 
-  Class[&#39;::dbus::install&#39;] -&gt; Class[&#39;::dbus::service&#39;]
-    -&gt; Class[&#39;::dbus::reload&#39;]
-  Class[&#39;::dbus::install&#39;] -&gt; Class[&#39;::dbus::config&#39;]
-    ~&gt; Class[&#39;::dbus::reload&#39;]
+  Class[&#39;dbus::install&#39;] -&gt; Class[&#39;dbus::service&#39;] -&gt; Class[&#39;dbus::reload&#39;]
+  Class[&#39;dbus::install&#39;] -&gt; Class[&#39;dbus::config&#39;] ~&gt; Class[&#39;dbus::reload&#39;]
 }</pre>
       </td>
     </tr>
@@ -447,9 +384,7 @@ class dbus (
 </div>
 
       <div id="footer">
-  Generated on Sat Jan 21 22:10:07 2017 by
-  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.8 (ruby-2.2.5).
+     Generated by <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>.
 </div>
 
     </div>
